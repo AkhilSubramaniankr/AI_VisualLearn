@@ -3,6 +3,7 @@ import cors from "cors";
 
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
+import lessonRoutes from "./routes/lesson.routes";
 
 const app = express();
 
@@ -18,6 +19,18 @@ app.use(
 app.use(
   "/api/user",
   userRoutes
+);
+
+app.use(
+  "/api/lessons",
+  lessonRoutes
+);
+
+app.use(
+  cors({
+    origin:
+      "http://localhost:5173"
+  })
 );
 
 app.get("/", (req, res) => {
