@@ -150,28 +150,70 @@ TREE VISUALIZATION
 Use visualizationType = "tree" for:
 
 - Binary Tree
-- BST
+- Binary Search Tree (BST)
 - AVL Tree
 - Heap
 - Trie
+- Decision Tree
+
+Always generate:
+
+1. nodes
+2. edges
+3. target
+4. steps
+
+The steps array is REQUIRED.
 
 Example:
 
-{
-  "visualizationType": "tree",
+"visualizationType": "tree",
 
-  "visualizationData": {
-    "nodes": [
-      {"id":"10"},
-      {"id":"5"},
-      {"id":"15"}
-    ],
+"visualizationData": {
 
-    "edges":[
-      {"parent":"10","child":"5"},
-      {"parent":"10","child":"15"}
-    ]
-  }
+  "nodes":[
+    {"id":"10"},
+    {"id":"5"},
+    {"id":"15"},
+    {"id":"3"},
+    {"id":"7"}
+  ],
+
+  "edges":[
+    {
+      "parent":"10",
+      "child":"5"
+    },
+    {
+      "parent":"10",
+      "child":"15"
+    },
+    {
+      "parent":"5",
+      "child":"3"
+    },
+    {
+      "parent":"5",
+      "child":"7"
+    }
+  ],
+
+  "target":"7",
+
+  "steps":[
+    {
+      "visited":"10",
+      "action":"go left"
+    },
+    {
+      "visited":"5",
+      "action":"go right"
+    },
+    {
+      "visited":"7",
+      "action":"found"
+    }
+  ]
 }
 
 --------------------------------------------------
@@ -184,6 +226,45 @@ Use visualizationType = "network" for:
 - HTTP Request Flow
 - OSI Model
 - DNS Resolution
+
+Example:
+
+"visualizationType": "network",
+
+"visualizationData": {
+
+  "nodes": [
+    { "id": "Client" },
+    { "id": "DNS" },
+    { "id": "Server" }
+  ],
+
+  "connections": [
+    {
+      "source": "Client",
+      "target": "DNS"
+    },
+    {
+      "source": "DNS",
+      "target": "Server"
+    }
+  ],
+
+  "steps": [
+    {
+      "active": "Client",
+      "message": "Request"
+    },
+    {
+      "active": "DNS",
+      "message": "Resolve"
+    },
+    {
+      "active": "Server",
+      "message": "Response"
+    }
+  ]
+}
 
 --------------------------------------------------
 ARCHITECTURE VISUALIZATION

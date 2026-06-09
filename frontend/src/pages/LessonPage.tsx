@@ -15,6 +15,9 @@ from "../components/LessonRenderer";
 import Quiz
 from "../components/Quiz";
 
+import SectionCard
+from "../components/SectionCard";
+
 function LessonPage() {
 
   const { id } = useParams();
@@ -53,62 +56,120 @@ function LessonPage() {
   }, [id]);
 
   if (!lesson) {
+
     return (
-      <div>
+      <div
+        style={{
+          padding: "30px"
+        }}
+      >
         Loading...
       </div>
     );
   }
-  console.log(
-  lesson.lessonJson.visualizationData
-  );
 
   return (
+
     <div
       style={{
-        padding: "30px"
+        padding: "30px",
+        maxWidth: "1000px",
+        margin: "0 auto"
       }}
     >
 
-      <h1>
-        {lesson.topic}
-      </h1>
+      {/* Overview */}
 
-      <p>
-        {lesson.lessonJson.overview}
-      </p>
-      
-      <LessonRenderer
-        type={lesson.lessonJson.visualizationType}
+      <SectionCard
+        title={lesson.topic}
+      >
 
-        data={lesson.lessonJson.visualizationData}
+        <p>
+          {
+            lesson.lessonJson
+              .overview
+          }
+        </p>
+
+      </SectionCard>
+
+      {/* Visualization */}
+
+      <SectionCard
+        title="Visualization"
+      >
+
+        <LessonRenderer
+          type={
+            lesson.lessonJson
+              .visualizationType
+          }
+
+          data={
+            lesson.lessonJson
+              .visualizationData
+          }
         />
 
-      <hr />
+      </SectionCard>
 
-      {lesson.lessonJson.cards.map(
-        (
-          card: any,
-          index: number
-        ) => (
-          <div key={index}>
+      {/* Learning Cards */}
 
-            <h2>
-              {card.title}
-            </h2>
+      <SectionCard
+        title="Learning Cards"
+      >
 
-            <p>
-              {card.content}
-            </p>
+        {
+          lesson.lessonJson.cards.map(
+            (
+              card: any,
+              index: number
+            ) => (
 
-          </div>
-        )
-      )}
-    <Quiz
-  questions={
-    lesson.lessonJson.quiz
-  }
-/>
+              <div
+                key={index}
+                className="
+                  mb-6
+                "
+              >
+
+                <h3
+                  className="
+                    text-xl
+                    font-semibold
+                    mb-2
+                  "
+                >
+                  {card.title}
+                </h3>
+
+                <p>
+                  {card.content}
+                </p>
+
+              </div>
+
+            )
+          )
+        }
+
+      </SectionCard>
+
+      {/* Quiz */}
+
+      <SectionCard
+        title="Quiz"
+      >
+
+        <Quiz
+          questions={
+            lesson.lessonJson
+              .quiz
+          }
+        />
+
+      </SectionCard>
+
     </div>
   );
 }

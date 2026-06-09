@@ -4,9 +4,34 @@ from "../visualizations/ArrayVisualization";
 import GraphVisualization
 from "../visualizations/GraphVisualization";
 
+import TreeVisualization
+from "../visualizations/TreeVisualization";
+
+import NetworkVisualization
+from "../visualizations/NetworkVisualization";
+
 type Props = {
   type: string;
   data?: any;
+};
+
+const visualizationMap: Record<
+  string,
+  React.ComponentType<any>
+> = {
+
+  array:
+    ArrayVisualization,
+
+  graph:
+    GraphVisualization,
+
+  tree:
+    TreeVisualization,
+
+  network:
+    NetworkVisualization
+
 };
 
 function LessonRenderer({
@@ -14,32 +39,28 @@ function LessonRenderer({
   data
 }: Props) {
 
-  switch(type) {
+  const Component =
+    visualizationMap[type];
 
-  case "array":
-
-    return (
-      <ArrayVisualization
-        data={data}
-      />
-    );
-
-  case "graph":
+  if (!Component) {
 
     return (
-      <GraphVisualization
-        data={data}
-      />
-    );
 
-  default:
-
-    return (
       <div>
         No visualization available
+        for type:
+        {" "}
+        {type}
       </div>
+
     );
-}
+  }
+
+  return (
+    <Component
+      data={data}
+    />
+  );
 }
 
 export default LessonRenderer;
