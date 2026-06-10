@@ -16,6 +16,12 @@ from "../visualizations/ArchitectureVisualization";
 import NeuralVisualization
 from "../visualizations/NeuralVisualization";
 
+import TimelineVisualization
+from "../visualizations/TimelineVisualization";
+
+import PipelineVisualization
+from "../visualizations/PipelineVisualization";
+
 type Props = {
   type: string;
   data?: any;
@@ -42,7 +48,13 @@ const visualizationMap: Record<
   ArchitectureVisualization,
 
   neural:
-    NeuralVisualization
+    NeuralVisualization,
+
+  timeline:
+    TimelineVisualization,
+
+  pipeline:
+    PipelineVisualization
 
 };
 
