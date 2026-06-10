@@ -10,6 +10,9 @@ from "../visualizations/TreeVisualization";
 import NetworkVisualization
 from "../visualizations/NetworkVisualization";
 
+import ArchitectureVisualization
+from "../visualizations/ArchitectureVisualization";
+
 type Props = {
   type: string;
   data?: any;
@@ -30,7 +33,10 @@ const visualizationMap: Record<
     TreeVisualization,
 
   network:
-    NetworkVisualization
+    NetworkVisualization,
+
+  architecture:
+  ArchitectureVisualization,
 
 };
 
