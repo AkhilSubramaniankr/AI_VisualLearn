@@ -229,39 +229,39 @@ Use visualizationType = "network" for:
 
 Example:
 
-"visualizationType": "network",
+"visualizationType":"network",
 
-"visualizationData": {
+"visualizationData":{
 
-  "nodes": [
-    { "id": "Client" },
-    { "id": "DNS" },
-    { "id": "Server" }
+  "nodes":[
+    {"id":"Client"},
+    {"id":"DNS"},
+    {"id":"Server"}
   ],
 
-  "connections": [
+  "connections":[
     {
-      "source": "Client",
-      "target": "DNS"
+      "source":"Client",
+      "target":"DNS"
     },
     {
-      "source": "DNS",
-      "target": "Server"
+      "source":"DNS",
+      "target":"Server"
     }
   ],
 
-  "steps": [
+  "steps":[
     {
-      "active": "Client",
-      "message": "Request"
+      "active":"Client",
+      "message":"Send Request"
     },
     {
-      "active": "DNS",
-      "message": "Resolve"
+      "active":"DNS",
+      "message":"Resolve Domain"
     },
     {
-      "active": "Server",
-      "message": "Response"
+      "active":"Server",
+      "message":"Return Response"
     }
   ]
 }
@@ -277,6 +277,73 @@ Use visualizationType = "architecture" for:
 - System Design
 - Cloud Architecture
 
+Example:
+
+"visualizationType":"architecture",
+
+"visualizationData":{
+
+  "components":[
+    {
+      "id":"Browser"
+    },
+    {
+      "id":"API Gateway"
+    },
+    {
+      "id":"Auth Service"
+    },
+    {
+      "id":"User Service"
+    },
+    {
+      "id":"Database"
+    }
+  ],
+
+  "connections":[
+    {
+      "source":"Browser",
+      "target":"API Gateway"
+    },
+    {
+      "source":"API Gateway",
+      "target":"Auth Service"
+    },
+    {
+      "source":"API Gateway",
+      "target":"User Service"
+    },
+    {
+      "source":"User Service",
+      "target":"Database"
+    }
+  ],
+
+  "steps":[
+    {
+      "active":"Browser",
+      "message":"User Request"
+    },
+    {
+      "active":"API Gateway",
+      "message":"Route Request"
+    },
+    {
+      "active":"Auth Service",
+      "message":"Authenticate"
+    },
+    {
+      "active":"User Service",
+      "message":"Fetch User"
+    },
+    {
+      "active":"Database",
+      "message":"Return Data"
+    }
+  ]
+}
+
 --------------------------------------------------
 NEURAL VISUALIZATION
 --------------------------------------------------
@@ -289,8 +356,129 @@ Use visualizationType = "neural" for:
 - CNN
 - RNN
 - LSTM
+- Transformer Architecture
+- Attention Mechanism
+- BERT
+- GPT
+- Embeddings
+- Encoders/Decoders
+- Backpropagation
+- Multimodal Models
+
+Example:
+
+"visualizationType":"neural",
+
+"visualizationData":{
+
+  "layers":[
+    {
+      "name":"Input",
+      "nodes":3
+    },
+    {
+      "name":"Hidden",
+      "nodes":4
+    },
+    {
+      "name":"Output",
+      "nodes":2
+    }
+  ],
+
+  "steps":[
+    {
+      "activeLayer":"Input",
+      "message":"Input Features"
+    },
+    {
+      "activeLayer":"Hidden",
+      "message":"Feature Processing"
+    },
+    {
+      "activeLayer":"Output",
+      "message":"Prediction"
+    }
+  ]
+}
 
 --------------------------------------------------
+TIMELINE VISUALIZATION
+--------------------------------------------------
+Use visualizationType = "timeline" for:
+
+- History of AI
+- History of NLP
+- Evolution of Databases
+- Programming Languages Timeline
+- Computer Generations
+- Internet Evolution
+- Machine Learning Evolution
+
+Example:
+
+"visualizationType":"timeline",
+
+"visualizationData":{
+
+  "events":[
+  {
+    "year":"1950",
+    "title":"Turing Test",
+    "description":"Alan Turing proposed a test to evaluate whether a machine can exhibit intelligent behavior."
+  },
+  {
+    "year":"1956",
+    "title":"Dartmouth Workshop",
+    "description":"The term Artificial Intelligence was formally introduced."
+  },
+  {
+    "year":"2020",
+    "title":"GPT-3",
+    "description":"OpenAI released GPT-3 with 175 billion parameters."
+  }
+]
+}
+
+--------------------------------------------------
+PIPELINE VISUALIZATION
+----------------
+PIPELINE VISUALIZATION
+
+Use visualizationType = "pipeline" for:
+
+- ETL
+- Data Pipeline
+- Machine Learning Pipeline
+- RAG Pipeline
+- CI/CD
+- MLOps
+- Feature Engineering Pipeline
+
+Example:
+
+{
+  "visualizationType":"pipeline",
+
+  "visualizationData":{
+    "stages":[
+      {
+        "name":"Extract",
+        "description":"Collect raw data"
+      },
+      {
+        "name":"Transform",
+        "description":"Clean and process data"
+      },
+      {
+        "name":"Load",
+        "description":"Store into warehouse"
+      }
+    ]
+  }
+}
+
+
 
 Rules:
 
