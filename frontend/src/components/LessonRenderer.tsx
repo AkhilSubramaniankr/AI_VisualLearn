@@ -13,6 +13,9 @@ from "../visualizations/NetworkVisualization";
 import ArchitectureVisualization
 from "../visualizations/ArchitectureVisualization";
 
+import NeuralVisualization
+from "../visualizations/NeuralVisualization";
+
 type Props = {
   type: string;
   data?: any;
@@ -37,6 +40,9 @@ const visualizationMap: Record<
 
   architecture:
   ArchitectureVisualization,
+
+  neural:
+    NeuralVisualization
 
 };
 
